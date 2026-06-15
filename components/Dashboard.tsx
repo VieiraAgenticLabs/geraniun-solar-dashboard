@@ -19,14 +19,14 @@ interface DashboardProps {
 type ChartType = 'bar' | 'area'
 
 const SERIES_LABELS = {
-  pagamento:   'Conta Paga',
-  producao:    'Produção',
-  injetado:    'Injetado',
+  pagamento: 'Conta Paga',
+  producao: 'Produção',
+  injetado: 'Injetado',
   autoconsumo: 'Autoconsumo',
 } as const
 
 // Colors shift slightly between light/dark for optimal contrast
-const SERIES_COLORS_DARK  = { pagamento: '#f5a623', producao: '#10b981', injetado: '#3b82f6', autoconsumo: '#8b5cf6' }
+const SERIES_COLORS_DARK = { pagamento: '#f5a623', producao: '#10b981', injetado: '#3b82f6', autoconsumo: '#8b5cf6' }
 const SERIES_COLORS_LIGHT = { pagamento: '#d97706', producao: '#059669', injetado: '#2563eb', autoconsumo: '#7c3aed' }
 
 export default function Dashboard({ data, metrics }: DashboardProps) {
@@ -60,12 +60,12 @@ export default function Dashboard({ data, metrics }: DashboardProps) {
 
   const totalMonths = data.length
   const solarMonths = data.filter(d => d.hasSolar).length
-  const co2Saved    = (metrics.totalAutoconsumo * 0.0817).toFixed(0)
+  const co2Saved = (metrics.totalAutoconsumo * 0.0817).toFixed(0)
 
   // ─── Shared class atoms ───────────────────────────────────────────
   const divider = 'border-black/[0.06] dark:border-white/[0.05]'
-  const panel   = 'bg-white dark:bg-white/[0.02] border border-black/[0.07] dark:border-white/[0.06] shadow-sm dark:shadow-none rounded-2xl'
-  const muted   = 'text-slate-500 dark:text-white/40'
+  const panel = 'bg-white dark:bg-white/[0.02] border border-black/[0.07] dark:border-white/[0.06] shadow-sm dark:shadow-none rounded-2xl'
+  const muted = 'text-slate-500 dark:text-white/40'
   const heading = 'font-bold text-slate-800 dark:text-white font-[\'Space_Grotesk\']'
 
   return (
@@ -152,10 +152,10 @@ export default function Dashboard({ data, metrics }: DashboardProps) {
         {/* ── KPI SECONDARY ROW ── */}
         <section className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { label: 'Pico Pré-Solar',     value: formatBRL(metrics.peakPaymentPre),                       icon: '📈', color: 'text-red-500 dark:text-red-400' },
-            { label: 'Mínimo Pós-Solar',   value: formatBRL(metrics.minPaymentPost),                       icon: '📉', color: 'text-emerald-600 dark:text-emerald-400' },
-            { label: 'Total Injetado',     value: `${(metrics.totalInjected / 1000).toFixed(1)} MWh`,     icon: '⚡', color: 'text-blue-600 dark:text-blue-400' },
-            { label: 'Total Autoconsumo',  value: `${(metrics.totalAutoconsumo / 1000).toFixed(1)} MWh`,  icon: '🔋', color: 'text-violet-600 dark:text-violet-400' },
+            { label: 'Pico Pré-Solar', value: formatBRL(metrics.peakPaymentPre), icon: '📈', color: 'text-red-500 dark:text-red-400' },
+            { label: 'Mínimo Pós-Solar', value: formatBRL(metrics.minPaymentPost), icon: '📉', color: 'text-emerald-600 dark:text-emerald-400' },
+            { label: 'Total Injetado', value: `${(metrics.totalInjected / 1000).toFixed(1)} MWh`, icon: '⚡', color: 'text-blue-600 dark:text-blue-400' },
+            { label: 'Total Autoconsumo', value: `${(metrics.totalAutoconsumo / 1000).toFixed(1)} MWh`, icon: '🔋', color: 'text-violet-600 dark:text-violet-400' },
           ].map((item, i) => (
             <div
               key={item.label}
@@ -214,9 +214,8 @@ export default function Dashboard({ data, metrics }: DashboardProps) {
                 <button
                   key={key}
                   onClick={() => toggleLine(key)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${
-                    activeLines[key] ? 'opacity-100' : 'opacity-35 hover:opacity-60'
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${activeLines[key] ? 'opacity-100' : 'opacity-35 hover:opacity-60'
+                    }`}
                   style={activeLines[key] ? {
                     background: `${SERIES_COLORS[key]}14`,
                     borderColor: `${SERIES_COLORS[key]}35`,
@@ -242,7 +241,7 @@ export default function Dashboard({ data, metrics }: DashboardProps) {
               <span className="text-xl">⚡</span>
               <div>
                 <p className="text-xs font-bold text-amber-700 dark:text-amber-400">
-                  Marco: Ativação Solar — Jun/2022
+                  Marco: Ativação Solar — Mai/2022
                 </p>
                 <p className={`text-xs mt-0.5 ${muted}`}>
                   Conta caiu de{' '}
@@ -285,7 +284,7 @@ export default function Dashboard({ data, metrics }: DashboardProps) {
             <table className="w-full text-xs">
               <thead>
                 <tr className={`border-b ${divider}`}>
-                  {['Mês/Ano','Boleto (R$)','Produção (kWh)','Injetado (kWh)','Autoconsumo (kWh)','Solar?'].map(col => (
+                  {['Mês/Ano', 'Boleto (R$)', 'Produção (kWh)', 'Injetado (kWh)', 'Autoconsumo (kWh)', 'Solar?'].map(col => (
                     <th key={col}
                       className={`px-4 py-3 text-left text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap ${muted}`}>
                       {col}
